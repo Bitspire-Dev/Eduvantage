@@ -1,0 +1,34 @@
+# --- Performance / Caching ---
+# Umieść ten plik w katalogu głównym hostingu (tam gdzie index.html po eksporcie)
+# Wspiera typowy Apache na shared hostingu.
+
+# Kompresja (gzip + brotli jeśli dostępne)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Długie cache dla niezmiennych zasobów (hashowane lub statyczne media)
+<FilesMatch "\.(?:js|css|svg|woff2|avif|webp|jpg|jpeg|png)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# Krótsze cache dla html (revalidacja częściej)
+<FilesMatch "\.(?:html)$">
+  Header set Cache-Control "public, max-age=300, must-revalidate"
+</FilesMatch>
+
+# Security (opcjonalnie)
+<IfModule mod_headers.c>
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Fallback dla czystych ścieżek (opcjonalnie)
+# RewriteEngine On
+# RewriteRule ^([^\.]+)$ $1.html [L]

@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## EduVantage – Landing Page (Next.js)
 
-## Getting Started
+Strona wizytówka korepetycji (Matematyka + Angielski) w Słupsku.
 
-First, run the development server:
+### Technologie
+- Next.js (App Router, TypeScript)
+- Tailwind (utility baseline + własne klasy + CSS zmienne)
+- Brak backendu – CTA telefoniczne (tel: link)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Struktura kluczowa
+```
+src/app/layout.tsx       -> układ, header, footer, floating call, metadata
+src/app/page.tsx         -> strona główna (import sekcji)
+src/app/page-content.tsx -> kompozycja sekcji
+src/components/*         -> sekcje i drobne komponenty
+src/app/globals.css      -> zmienne, klasy pomocnicze
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Edycja treści
+- Numer telefonu: wyszukaj `884938490` i podmień globalnie jeśli się zmieni.
+- Cennik: `pricing.tsx` – tablica `tiers`.
+- FAQ: `faq.tsx` – tablica `items`.
+- Opinie: `testimonials.tsx` – tablica `sample`.
+- Kolory: `globals.css` zmienne `--color-*`.
+- Meta / SEO: `layout.tsx` obiekt `metadata` + TODO domena.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dodanie domeny produkcyjnej
+W `layout.tsx` podmień `https://example.com` na finalny adres (używane w `metadataBase` i OpenGraph).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Uruchomienie (dev)
+```
+npm install
+npm run dev
+```
 
-## Learn More
+### Budowa produkcyjna
+```
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Deployment
+- Vercel (najprostsze – import repo)
+- Netlify / Render (Next 15 wspierany)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Analityka
+Możesz podpiąć narzędzie (GA4 / Plausible) – dodaj komponent `<Script>` i nasłuchuj kliknięć `tel:` (atrybuty `data-track`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### TODO (opcjonalne)
+- Dodać realne opinie + zdjęcia (webp 120x120) i lazy loading.
+- Dodać politykę prywatności jeśli pojawi się formularz.
+- Dodać blog (folder `src/app/blog`).
 
-## Deploy on Vercel
+### Dodatkowe biblioteki (zainstalowane)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `react-bits` — lekkie, multiplatformowe prymitywy (View/Text/Image/StyleSheet). Przydatne, gdy chcesz walczyć o zgodność między web + native lub stworzyć abstrakcję UI. (Demo: `src/components/react-bits-demo.tsx`)
+- `swr` — lekka biblioteka pobierania danych (Vercel/Next friend). Dobry wybór do cache/fetch w komponentach.
+- `usehooks-ts` — kolekcja prostych hooków TypeScript (useWindowSize, useLocalStorage itp.).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Te biblioteki zostały zainstalowane lokalnie i są gotowe do użycia. Aby zobaczyć przykład użycia, zobacz `src/components/react-bits-demo.tsx`.
+
+### Licencja
+Kod do swobodnego użycia w ramach projektu EduVantage.
