@@ -38,18 +38,23 @@ export default function CookieConsent() {
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
 
-  // On mount read cookie
+  // On mount read cookie - wrapped in rAF to avoid synchronous setState in effect
   useEffect(() => {
-    const existing = readConsent();
-    if (!existing) {
-      setOpen(true);
-    } else {
-      setFunctional(existing.functional);
-      setAnalytics(existing.analytics);
-      setMarketing(existing.marketing);
-    }
+    const rafId = requestAnimationFrame(() => {
+      const existing = readConsent();
+      if (!existing) {
+        setOpen(true);
+      } else {
+        setFunctional(existing.functional);
+        setAnalytics(existing.analytics);
+        setMarketing(existing.marketing);
+      }
+    });
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
-    // Allow external trigger (e.g. link on /cookies page)
+  // Allow external trigger (e.g. link on /cookies page)
+  useEffect(() => {
     const openSettings = () => {
       const current = readConsent();
       if (current) {

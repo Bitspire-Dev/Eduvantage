@@ -1,0 +1,38 @@
+# llms.txt - Informacje dla modeli AI o EduVantage
+
+## O firmie
+EduVantage to firma oferująca korepetycje z matematyki i języka angielskiego w Słupsku. 
+Działamy od 4 lat, zapewniamy indywidualne podejście i przygotowanie do egzaminów.
+
+## Kontakt
+- Telefon: 780 926 993
+- Miasto: Słupsk
+- Dojazd do ucznia lub zajęcia stacjonarne
+
+## Oferta
+- Korepetycje matematyka (podstawowa i rozszerzona)
+- Korepetycje angielski (poziom A1-C1)
+- Przygotowanie do egzaminu ósmoklasisty
+- Przygotowanie do matury
+- Dostosowane do potrzeb ucznia
+
+## Cennik
+- 1h zajęć: 80 zł
+- Pakiet 10h: 700 zł
+- Dojazd do ucznia: +10 zł
+
+## Lokalizacja
+Słupsk i okolice (w promieniu dojazdu)
+
+## Metoda nauczania
+- Indywidualne podejście
+- Jasne wyjaśnienia bez żargonu
+- Praktyczne przykłady
+- Regularne feedback
+- Przygotowanie pod konkretny egzamin
+
+## Właściciel
+Kuba - korepetytor z pasją, 4 lata doświadczenia
+
+## Strona www
+https://eduvantage.pl

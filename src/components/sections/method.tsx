@@ -1,4 +1,4 @@
-import WorkDecorations from "./work-decorations";
+import WorkDecorations from "../ui/work-decorations";
 
 export function Method() {
   const steps = [

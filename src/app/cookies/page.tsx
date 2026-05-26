@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import OpenCookieSettingsButton from '../../components/open-cookie-settings';
+import OpenCookieSettingsButton from '../../components/ui/open-cookie-settings';
 
 export const metadata: Metadata = {
   title: 'Polityka cookies – EduVantage korepetycje matematyka i angielski Słupsk',

@@ -36,7 +36,10 @@ function CountUp({ end, duration = 1400, suffix = '' }: { end: number; duration?
     if (!visible) return;
     let raf = 0;
     const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { setVal(end); return; }
+    if (reduce) {
+      requestAnimationFrame(() => setVal(end));
+      return;
+    }
     const start = performance.now();
     const animate = (now: number) => {
       const t = Math.min(1, (now - start) / duration);

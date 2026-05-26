@@ -8,10 +8,9 @@ export function Hero() {
     <section id="hero" className="hero py-20">
       {/* Manual picture for static export (AVIF + WebP fallback) */}
       <picture className="hero-bg-wrapper">
-        <source srcSet="/grupa-dzieci-uczacych-sie-w-szkole.avif" type="image/avif" />
-        <source srcSet="/grupa-dzieci-uczacych-sie-w-szkole.webp" type="image/webp" />
-        <img
-          src="/grupa-dzieci-uczacych-sie-w-szkole.webp"
+        <source srcSet="/layout/grupa-dzieci-uczacych-sie-w-szkole.avif" type="image/avif" />
+                <img
+          src="/layout/grupa-dzieci-uczacych-sie-w-szkole.avif"
           alt="" /* decorative */
           fetchPriority="high"
           decoding="async"
@@ -37,7 +36,7 @@ export function Hero() {
 
           <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
             <a
-              href="tel:+48884938490"
+              href="tel:+48780926993"
               className="btn btn-primary"
               aria-label="Zadzwoń teraz"
             >

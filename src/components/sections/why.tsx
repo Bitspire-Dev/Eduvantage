@@ -17,7 +17,10 @@ export function Why(){
     const el = rootRef.current;
     if(!el) return;
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(prefersReduced) { setDroplets([]); return; }
+    if(prefersReduced) {
+      requestAnimationFrame(() => setDroplets([]));
+      return;
+    }
 
     const compute = ()=>{
       const width = el.offsetWidth || el.getBoundingClientRect().width || window.innerWidth;
@@ -39,7 +42,7 @@ export function Why(){
         items.push({ left, delay, duration, key: i });
       }
 
-      setDroplets(items);
+      requestAnimationFrame(() => setDroplets(items));
     };
     compute();
     const onResize = () => { compute(); };
@@ -65,12 +68,12 @@ export function Why(){
           );
         })}
       </div>
-      <div className="container relative z-[2]">
+      <div className="container relative z-2">
         <header className="section-header">
           <h2>Dlaczego <span className="accent-text">EduVantage</span>?</h2>
           <p className="muted">Stawiamy na zrozumienie, system i motywację. Każdy uczeń jest inny – dopasowujemy tempo, sposób tłumaczenia oraz formę pracy.</p>
         </header>
-        <div className="grid-auto-fit relative z-[2]">
+        <div className="grid-auto-fit relative z-2">
           {features.map(f=> (
             <div key={f.t} className="card"><h3 className="m-0 mb-3 text-lg font-semibold">{f.t}</h3><p className="m-0 text-sm leading-relaxed muted">{f.d}</p></div>
           ))}

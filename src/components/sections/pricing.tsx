@@ -31,7 +31,7 @@ export function Pricing(){
               </ul>
               {/* CTA */}
               <a
-                href="tel:+48884938490"
+                href="tel:+48780926993"
                 className="btn btn-primary w-full"
                 data-track={`call-${t.title}`}
               >

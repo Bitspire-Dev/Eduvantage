@@ -15,10 +15,10 @@ export function Contact() {
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
-            <a href="tel:+48884938490" className="btn btn-primary" aria-label="Zadzwoń do nas">
-              Zadzwoń: 884 938 490
+            <a href="tel:+48780926993" className="btn btn-primary" aria-label="Zadzwoń do nas">
+              Zadzwoń: 780 926 993
             </a>
-            <a href="sms:+48884938490" className="btn btn-outline">
+            <a href="sms:+48780926993" className="btn btn-outline">
               Wyślij SMS
             </a>
           </div>
@@ -39,7 +39,7 @@ export function Contact() {
         <aside>
           <div className="hero-stats">
             <div className="stat-card">
-              <h3 className="stat-number">884 938 490</h3>
+              <h3 className="stat-number">780 926 993</h3>
               <p className="stat-label">Telefon kontaktowy</p>
             </div>
             
