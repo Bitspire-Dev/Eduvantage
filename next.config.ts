@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
+  distDir: 'dist',
   // Export as directories with index.html (e.g. /cookies/index.html)
   trailingSlash: true,
   images: {
