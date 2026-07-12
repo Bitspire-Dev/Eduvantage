@@ -545,7 +545,7 @@ details.faq-item[open] .faq-answer { max-height:1000px; opacity:1; transform:tra
 /* Mobile menu transitions */
 .mobile-overlay { opacity:0; transition: opacity .25s ease; }
 .mobile-overlay:not(.hidden) { opacity:1; }
-.mobile-panel { transform: translateX(20%); transition: transform .32s cubic-bezier(.2,.8,.2,1); }
+.mobile-panel { transform: translateX(0); transition: transform .32s cubic-bezier(.2,.8,.2,1); }
 .mobile-panel.translate-x-full { transform: translateX(100%); }
 .mobile-overlay.hidden .mobile-panel { transform: translateX(100%); }
 

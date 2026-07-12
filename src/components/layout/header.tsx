@@ -75,7 +75,7 @@ export function Header() {
         </button>
         <div
           id="mobileNav"
-          className="fixed inset-0 z-70 hidden bg-black/40 backdrop-blur-sm md:hidden mobile-overlay"
+          className="fixed inset-0 z-70 hidden bg-black/75 backdrop-blur-md md:hidden mobile-overlay"
         >
           <div className="absolute top-0 right-0 h-full w-72 bg-white shadow-xl p-6 flex flex-col gap-6 mobile-panel translate-x-full will-change-transform">
             <div className="flex items-center justify-between mb-2">
