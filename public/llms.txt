@@ -1,4 +1,6 @@
-# llms.txt - Informacje dla modeli AI o EduVantage
+# EduVantage
+
+Korepetycje z matematyki i języka angielskiego w Słupsku.
 
 ## O firmie
 EduVantage to firma oferująca korepetycje z matematyki i języka angielskiego w Słupsku. 
