@@ -3,7 +3,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  distDir: 'dist',
+  distDir: '.next',
   // Export as directories with index.html (e.g. /cookies/index.html)
   trailingSlash: true,
   images: {
