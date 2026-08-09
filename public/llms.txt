@@ -37,19 +37,19 @@ Słupsk i okolice (w promieniu dojazdu)
 Kuba - korepetytor z pasją, 4 lata doświadczenia
 
 ## Strona www
-https://eduvantage.pl
+[EduVantage.pl](https://eduvantage.pl)
 
 ## Ważne linki
-- Strona główna: https://eduvantage.pl/
-- Sekcja Hero: https://eduvantage.pl/#hero
-- Dlaczego warto: https://eduvantage.pl/#why
-- O nas: https://eduvantage.pl/#about
-- Przedmioty: https://eduvantage.pl/#subjects
-- Cennik: https://eduvantage.pl/#pricing
-- Metoda: https://eduvantage.pl/#method
-- Opinie: https://eduvantage.pl/#testimonials
-- FAQ: https://eduvantage.pl/#faq
-- Kontakt: https://eduvantage.pl/#contact
-- Polityka prywatności: https://eduvantage.pl/polityka-prywatnosci/
-- Regulamin: https://eduvantage.pl/regulamin/
-- Polityka cookies: https://eduvantage.pl/cookies/
+- [Strona główna](https://eduvantage.pl/)
+- [Sekcja Hero](https://eduvantage.pl/#hero)
+- [Dlaczego warto](https://eduvantage.pl/#why)
+- [O nas](https://eduvantage.pl/#about)
+- [Przedmioty](https://eduvantage.pl/#subjects)
+- [Cennik](https://eduvantage.pl/#pricing)
+- [Metoda](https://eduvantage.pl/#method)
+- [Opinie](https://eduvantage.pl/#testimonials)
+- [FAQ](https://eduvantage.pl/#faq)
+- [Kontakt](https://eduvantage.pl/#contact)
+- [Polityka prywatności](https://eduvantage.pl/polityka-prywatnosci/)
+- [Regulamin](https://eduvantage.pl/regulamin/)
+- [Polityka cookies](https://eduvantage.pl/cookies/)
