@@ -1,35 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-
-// Shape of consent preferences
-interface ConsentState {
-  necessary: true; // always true
-  functional: boolean;
-  analytics: boolean;
-  marketing: boolean;
-  ts: number; // timestamp
-}
-
-const CONSENT_COOKIE = 'cookie_consent';
-const MAX_AGE_SECONDS = 60 * 60 * 24 * 180; // ~6 months
-
-function readConsent(): ConsentState | null {
-  if (typeof document === 'undefined') return null;
-  const m = document.cookie.match(new RegExp('(?:^|; )' + CONSENT_COOKIE + '=([^;]*)'));
-  if (!m) return null;
-  try {
-    return JSON.parse(decodeURIComponent(m[1]));
-  } catch {
-    return null;
-  }
-}
-
-function writeConsent(data: Omit<ConsentState, 'ts'> & { ts?: number }) {
-  const payload: ConsentState = { ...data, ts: Date.now(), necessary: true };
-  const value = encodeURIComponent(JSON.stringify(payload));
-  document.cookie = `${CONSENT_COOKIE}=${value}; Path=/; Max-Age=${MAX_AGE_SECONDS}; SameSite=Lax` + (location.protocol === 'https:' ? '; Secure' : '');
-  window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: payload }));
-}
+import { readConsent, writeConsent } from '@/lib/cookies';
 
 export default function CookieConsent() {
   const [open, setOpen] = useState(false);
@@ -70,17 +41,17 @@ export default function CookieConsent() {
   }, []);
 
   const acceptAll = () => {
-    writeConsent({ functional: true, analytics: true, marketing: true, necessary: true });
+    writeConsent({ functional: true, analytics: true, marketing: true });
     setOpen(false);
   };
 
   const rejectOptional = () => {
-    writeConsent({ functional: true, analytics: false, marketing: false, necessary: true }); // keep functional true for usability
+    writeConsent({ functional: true, analytics: false, marketing: false }); // keep functional true for usability
     setOpen(false);
   };
 
   const saveSelection = () => {
-    writeConsent({ functional, analytics, marketing, necessary: true });
+    writeConsent({ functional, analytics, marketing });
     setOpen(false);
   };
 

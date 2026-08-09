@@ -1,88 +1,43 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FaWhatsapp, FaTimes, FaPaperPlane } from "react-icons/fa";
-
-const POPUP_DELAY_MS = 5000;
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 export default function WhatsAppButton() {
-    const [mounted, setMounted] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
-    const [dismissed, setDismissed] = useState(false);
-    const [isChatOpen, setIsChatOpen] = useState(false);
-    const [message, setMessage] = useState("");
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    const phone = "48780926993"; // WhatsApp number without + prefix
-
-    // Use requestAnimationFrame to avoid direct setState in effect body
-    useEffect(() => {
-        const rafId = requestAnimationFrame(() => setMounted(true));
-        return () => cancelAnimationFrame(rafId);
-    }, []);
-
-    useEffect(() => {
-        if (!mounted || !phone) return;
-        const timer = setTimeout(() => setShowPopup(true), POPUP_DELAY_MS);
-        return () => clearTimeout(timer);
-    }, [mounted, phone]);
-
-    // Handle Enter / Escape key
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Enter" && isChatOpen && message.trim()) {
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-                setMessage("");
-            }
-            if (e.key === "Escape" && isChatOpen) {
-                setIsChatOpen(false);
-            }
-        };
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isChatOpen, message, phone]);
-
-    if (!mounted || !phone) return null;
-
-    const handleDismissPopup = (e?: React.MouseEvent) => {
-        if (e) e.stopPropagation();
-        setShowPopup(false);
-        setDismissed(true);
-    };
-
-    const handleToggleChat = () => {
-        if (!isChatOpen) {
-            // Opening chat dismisses the popup forever
-            handleDismissPopup();
-            setIsChatOpen(true);
-            // focus input smoothly after open
-            setTimeout(() => inputRef.current?.focus(), 100);
-        } else {
-            setIsChatOpen(false);
-        }
-    };
-
-    const handleSend = () => {
-        if (!message.trim()) return;
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-        setMessage("");
-    };
+    const {
+        mounted,
+        showPopup,
+        dismissed,
+        isChatOpen,
+        message,
+        setMessage,
+        inputRef,
+        handleDismissPopup,
+        handleToggleChat,
+        handleSend,
+    } = useWhatsApp("48780926993");
 
     const currentTime = new Date().toLocaleTimeString("pl-PL", {
         hour: "2-digit",
         minute: "2-digit",
     });
 
+    if (!mounted) return null;
+
+    const handleDismissPopupWithStop = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        handleDismissPopup();
+    };
+
     return (
         <>
-            {/* ── CHAT WINDOW ── */}
             {isChatOpen && (
                 <div className="wa-chat-container wa-chat-layout">
                     {/* Header */}
                     <div className="wa-chat-header">
                         <button
-                            onClick={() => setIsChatOpen(false)}
+                            onClick={() => handleToggleChat()}
                             aria-label="Zamknij czat"
                             className="wa-chat-close"
                         >
@@ -153,7 +108,7 @@ export default function WhatsAppButton() {
                 >
                     <div className="wa-popup-inner">
                         <button
-                            onClick={handleDismissPopup}
+                            onClick={handleDismissPopupWithStop}
                             aria-label="Zamknij powiadomienie"
                             className="wa-popup-close"
                         >

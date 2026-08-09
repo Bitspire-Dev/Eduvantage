@@ -52,16 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl">
       <body className={inter.variable + ' has-cookie-consent'}>
-  {/* Google Tag Manager will be injected lazily by AnalyticsLoader after consent */}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        {/* Preload hero LCP image (already priority via next/image for safety in no-JS) */}
-        <link
-          rel="preload"
-          as="image"
-          href="/layout/grupa-dzieci-uczacych-sie-w-szkole.avif"
-          // fetchpriority is not yet a standard attribute for link rel=preload widely, handled by priority Image
-        />
+        {/* Google Tag Manager will be injected lazily by AnalyticsLoader after consent */}
         {/* Critical CSS inline (very small subset) */}
         <style
           dangerouslySetInnerHTML={{

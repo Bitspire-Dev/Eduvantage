@@ -1,8 +1,18 @@
-"use client";
+import Image from 'next/image';
 
 export function Contact() {
   return (
     <section id="contact" className="section contact-section hero-style">
+      <div className="contact-bg-wrapper" aria-hidden="true">
+        <Image
+          src="/layout/nauczanie-2.png"
+          alt="" // decorative
+          fill
+          sizes="100vw"
+          quality={80}
+          className="contact-bg-img"
+        />
+      </div>
       <div className="hero-overlay" aria-hidden="true" />
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* LEFT: content (jak w hero) */}

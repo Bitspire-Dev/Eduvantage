@@ -1,14 +1,20 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: 'export',
   distDir: 'dist',
   // Export as directories with index.html (e.g. /cookies/index.html)
   trailingSlash: true,
   images: {
-    // Required because we use `output: 'export'` (no on-demand Image Optimization server)
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 80],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2400],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 31536000,
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons'],
   },
   async headers() {
     return [
@@ -31,4 +37,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default bundleAnalyzer(nextConfig);

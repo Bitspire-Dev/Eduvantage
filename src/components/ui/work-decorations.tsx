@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-
-import React, { useMemo } from "react";
+import React from "react";
 
 type Deco = {
   id: string;
@@ -14,9 +12,7 @@ type Deco = {
   opacity: number;
 };
 
-export default function WorkDecorations() {
-  // Fixed positions for each SVG (deterministic) - computed once via useMemo
-  const decors = useMemo<Deco[]>(() => [
+const decors: Deco[] = [
     // LEFT SIDE
     {
       id: "kalkulator",
@@ -73,8 +69,9 @@ export default function WorkDecorations() {
       rotate: -32,
       opacity: 0.5,
     },
-  ], []);
+  ];
 
+export default function WorkDecorations() {
   return (
     <div
       className="work-decorations"

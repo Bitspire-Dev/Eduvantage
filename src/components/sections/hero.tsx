@@ -1,25 +1,20 @@
-import React from 'react';
+import Image from 'next/image';
 
-// Hero section: moved background image from CSS pseudo-element into an inline next/image
-// with priority & fetchPriority="high" to make the LCP image discoverable in HTML
-// (improves Lighthouse: LCP element discoverability + early fetching).
+// Hero section with next/image for automatic AVIF/WebP optimization and responsive srcSet.
 export function Hero() {
   return (
     <section id="hero" className="hero py-20">
-      {/* Manual picture for static export (AVIF + WebP fallback) */}
-      <picture className="hero-bg-wrapper">
-        <source srcSet="/layout/grupa-dzieci-uczacych-sie-w-szkole.avif" type="image/avif" />
-                <img
-          src="/layout/grupa-dzieci-uczacych-sie-w-szkole.avif"
-          alt="" /* decorative */
-          fetchPriority="high"
-          decoding="async"
+      <div className="hero-bg-wrapper">
+        <Image
+          src="/layout/grupa-dzieci-uczacych-sie-w-szkole.png"
+          alt="" // decorative
+          fill
+          priority
           sizes="100vw"
-          width={2400}
-          height={1400}
+          quality={80}
           className="hero-bg-img"
         />
-      </picture>
+      </div>
       <div className="hero-overlay" />
       <div className="container hero-grid grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* LEFT: content */}
